@@ -101,7 +101,9 @@ export default defineConfig(({ mode }) => {
   return {
     resolve: {
       alias: {
-        "@design": resolve(__dirname, "../../design"),
+        "@design/Stickers": resolve(__dirname, "src/assets/stickers"),
+        "@design": resolve(__dirname, "src/assets"),
+        "@": resolve(__dirname, "src"),
       },
     },
     plugins: [
