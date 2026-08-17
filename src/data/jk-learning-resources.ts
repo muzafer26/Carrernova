@@ -1,0 +1,68 @@
+import type { OfficialResource } from "@/types/ps09";
+
+export const jkLearningResources: OfficialResource[] = [
+  {
+    key: "ncert-digital-textbooks",
+    title: "NCERT Digital Textbooks & Exemplars",
+    organization: "National Council of Educational Research and Training (NCERT)",
+    category: "Learning Resources",
+    audienceStage: "Class 10 & Class 12 Students",
+    description: "Official digital textbooks for Physics, Chemistry, Mathematics, Biology, Accountancy, Economics, and Humanities.",
+    url: "https://ncert.nic.in/textbook.php",
+    source: {
+      label: "NCERT Official Portal",
+      url: "https://ncert.nic.in",
+      retrievedOn: "2026-08-17",
+      status: "verified",
+    },
+    verificationStatus: "verified",
+  },
+  {
+    key: "diksha-jk-portal",
+    title: "DIKSHA J&K State Portal",
+    organization: "Ministry of Education & JKBOSE",
+    category: "Learning Resources",
+    audienceStage: "Class 10 & Class 12 Students",
+    description: "Interactive digital lessons, QR-coded energised textbooks, and video lectures customized for J&K Board curriculum.",
+    url: "https://diksha.gov.in/jk",
+    source: {
+      label: "DIKSHA National Portal",
+      url: "https://diksha.gov.in",
+      retrievedOn: "2026-08-17",
+      status: "verified",
+    },
+    verificationStatus: "verified",
+  },
+  {
+    key: "nptel-open-courses",
+    title: "NPTEL Open Online Courses & Swayam",
+    organization: "IITs and IISc / Ministry of Education",
+    category: "Learning Resources",
+    audienceStage: "UG Degree & Skill Students",
+    description: "Free high-quality video courses in Computer Science, Data Structures, Management, Humanities, and Basic Sciences.",
+    url: "https://nptel.ac.in",
+    source: {
+      label: "NPTEL Official Portal",
+      url: "https://nptel.ac.in",
+      retrievedOn: "2026-08-17",
+      status: "verified",
+    },
+    verificationStatus: "verified",
+  },
+  {
+    key: "epathshala-mhrd",
+    title: "e-Pathshala Educational Resources",
+    organization: "NCERT / Ministry of Education",
+    category: "Learning Resources",
+    audienceStage: "School & Higher Education",
+    description: "Access audio, video, e-books, and teaching learning material across multiple subjects.",
+    url: "https://epathshala.nic.in",
+    source: {
+      label: "e-Pathshala Portal",
+      url: "https://epathshala.nic.in",
+      retrievedOn: "2026-08-17",
+      status: "verified",
+    },
+    verificationStatus: "verified",
+  },
+];
