@@ -83,7 +83,7 @@ function StandaloneSkillsPage() {
       </div>
 
       {/* Category Filter */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar touch-scroll">
         {categories.map((cat) => (
           <Badge
             key={cat}
@@ -200,7 +200,7 @@ function StandaloneSkillsPage() {
         })}
       </div>
 
-      <div className="flex justify-between items-center pt-4">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4">
         <Button variant="outline" onClick={() => navigate({ to: "/dashboard/directions" })}>
           ← Back to Academic Directions
         </Button>

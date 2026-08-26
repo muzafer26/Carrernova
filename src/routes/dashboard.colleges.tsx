@@ -187,7 +187,7 @@ function CollegesPage() {
       )}
 
       {/* Navigation */}
-      <div className="flex justify-between items-center pt-4">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4">
         <Button variant="outline" onClick={() => navigate({ to: "/dashboard/directions" })}>
           ← Back to Directions
         </Button>

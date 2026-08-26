@@ -11,14 +11,10 @@ import {
   CheckCircle2,
   BookOpen,
   MessageSquare,
-  LogOut,
   ChevronRight,
   Sparkles,
   HelpCircle,
-  Settings,
 } from "lucide-react";
-import { useAuth } from "@/lib/auth";
-import { supabase } from "@/integrations/supabase/client";
 
 export interface NavGroupItem {
   to: string;
@@ -39,9 +35,8 @@ const navGroups: NavGroup[] = [
     label: "Explore",
     icon: Home,
     items: [
-      { to: "/dashboard", label: "Overview", icon: Home, exact: true },
-      { to: "/dashboard/profile", label: "About You (Class 10/12)", icon: User },
-      { to: "/dashboard/assess", label: "Discover Preferences", icon: Brain },
+      { to: "/dashboard", label: "My Saved Journey", icon: Home, exact: true },
+      { to: "/dashboard/profile", label: "Guided Advisor", icon: User },
     ],
   },
   {
@@ -49,7 +44,7 @@ const navGroups: NavGroup[] = [
     icon: Compass,
     items: [
       { to: "/dashboard/directions", label: "Academic Degree Pathways", icon: Compass },
-      { to: "/dashboard/skills", label: "Skill & ITI Vocational", icon: Compass, badge: "Jobs" },
+      { to: "/dashboard/skills", label: "Skill & ITI Vocational", icon: Compass, badge: "Trades" },
       { to: "/dashboard/govt-pathways", label: "Govt Career Pathways", icon: Compass, badge: "JKPSC" },
       { to: "/dashboard/colleges", label: "Where to Study (GDCs)", icon: GraduationCap },
       { to: "/dashboard/compare", label: "Decision Workspace", icon: ArrowLeftRight },
@@ -68,7 +63,6 @@ const navGroups: NavGroup[] = [
 
 
 export function SidebarNavigationSlim() {
-  const { user } = useAuth();
   const navigate = useNavigate();
   const currentPath = useRouterState({ select: (s) => s.location.pathname });
 
@@ -146,19 +140,6 @@ export function SidebarNavigationSlim() {
           >
             <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`} />
           </button>
-
-          <button
-            onClick={async () => {
-              try {
-                await supabase.auth.signOut();
-              } catch (e) {}
-              navigate({ to: "/" });
-            }}
-            className="w-10 h-10 rounded-xl text-slate-400 hover:bg-red-500/20 hover:text-red-400 flex items-center justify-center transition"
-            title="Sign out"
-          >
-            <LogOut className="h-4 w-4" />
-          </button>
         </div>
       </div>
 
@@ -224,7 +205,7 @@ export function SidebarNavigationSlim() {
             <div className="p-3 border-t border-slate-100 bg-slate-50/50">
               <div className="text-[10px] font-bold text-[#636363]">J&K Student Portal</div>
               <div className="text-xs font-extrabold text-[#0f2239] truncate">
-                {user?.email || "student@jk.gov.in"}
+                Student Advisor Workspace
               </div>
             </div>
           </motion.div>

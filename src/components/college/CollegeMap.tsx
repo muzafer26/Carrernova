@@ -16,8 +16,9 @@ export function CollegeMap({ selectedDistrict, selectedProgram, onSelectCollege 
   const [divisionFilter, setDivisionFilter] = useState<"All" | "Jammu" | "Kashmir">("All");
   const [activeCollege, setActiveCollege] = useState<JKCollege | null>(jkColleges[0] || null);
 
-  const filteredColleges = useMemo(() => {
-    return jkColleges.filter((c) => {
+  // Fallback calculation: If strict district + program yields 0, fall back to program across J&K
+  const { displayColleges, isDistrictFallback } = useMemo(() => {
+    const strictFiltered = jkColleges.filter((c) => {
       if (selectedDistrict && c.district.toLowerCase() !== selectedDistrict.toLowerCase()) {
         return false;
       }
@@ -37,7 +38,39 @@ export function CollegeMap({ selectedDistrict, selectedProgram, onSelectCollege 
       }
       return true;
     });
+
+    if (strictFiltered.length > 0) {
+      return { displayColleges: strictFiltered, isDistrictFallback: false };
+    }
+
+    // If empty because of district constraint, fall back to program across J&K
+    if (selectedDistrict && selectedProgram) {
+      const programColleges = jkColleges.filter((c) => {
+        if (!c.programs.includes(selectedProgram)) return false;
+        if (divisionFilter !== "All" && c.division !== divisionFilter) return false;
+        if (search) {
+          const query = search.toLowerCase();
+          return (
+            c.name.toLowerCase().includes(query) ||
+            c.district.toLowerCase().includes(query) ||
+            (c.affiliation && c.affiliation.toLowerCase().includes(query))
+          );
+        }
+        return true;
+      });
+      if (programColleges.length > 0) {
+        return { displayColleges: programColleges, isDistrictFallback: true };
+      }
+    }
+
+    return { displayColleges: jkColleges, isDistrictFallback: false };
   }, [selectedDistrict, selectedProgram, divisionFilter, search]);
+
+  useEffect(() => {
+    if (displayColleges.length > 0 && (!activeCollege || !displayColleges.some((c) => c.key === activeCollege.key))) {
+      setActiveCollege(displayColleges[0]);
+    }
+  }, [displayColleges, activeCollege]);
 
   const handleSelect = (c: JKCollege) => {
     setActiveCollege(c);
@@ -86,15 +119,24 @@ export function CollegeMap({ selectedDistrict, selectedProgram, onSelectCollege 
         {/* Interactive OpenStreetMap Geographic Visualizer */}
         <div className="lg:col-span-7 space-y-4">
           <Card className="p-4 bg-white text-[#0f2239] rounded-3xl border border-slate-200/80 shadow-xl overflow-hidden min-h-[440px] flex flex-col justify-between relative">
-            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-3 gap-2">
               <div className="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-[#4582ff]">
                 <Compass className="h-4 w-4" />
                 <span>Geographic Discovery Layer (OpenStreetMap J&K)</span>
               </div>
               <span className="text-xs font-bold text-[#0f2239] bg-slate-100 px-3 py-1 rounded-full">
-                {filteredColleges.length} Verified Institutions
+                {displayColleges.length} Verified Institutions
               </span>
             </div>
+
+            {isDistrictFallback && (
+              <div className="mt-3 p-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-2xl text-[11px] leading-relaxed flex items-center gap-2 font-medium">
+                <AlertCircle className="h-4 w-4 text-amber-600 shrink-0" />
+                <span>
+                  No verified GDC in District <strong>{selectedDistrict}</strong> currently lists this program. Displaying verified J&K Government Degree Colleges offering this program:
+                </span>
+              </div>
+            )}
 
             {/* Real OpenStreetMap Map Embed Container */}
             <div className="relative w-full h-[240px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-100 mt-3">
@@ -118,7 +160,7 @@ export function CollegeMap({ selectedDistrict, selectedProgram, onSelectCollege 
 
             {/* Interactive College Selector Cards */}
             <div className="pt-3 grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-[160px] overflow-y-auto pr-1">
-              {filteredColleges.map((c) => {
+              {displayColleges.map((c) => {
                 const isSelected = activeCollege?.key === c.key;
                 return (
                   <button

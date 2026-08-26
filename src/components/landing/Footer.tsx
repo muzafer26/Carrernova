@@ -3,17 +3,16 @@ import { GraduationCap, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const officialLinks = [
-    { label: "J&K UG Admission Portal", href: "https://jkadmissions.in" },
-    { label: "Directorate of Colleges J&K", href: "https://directorcollegesjk.in/authusers/CourseListPublic.aspx" },
-    { label: "University of Jammu", href: "https://jammuuniversity.ac.in" },
-    { label: "University of Kashmir", href: "https://www.kashmiruniversity.net" },
-    { label: "JKBOPEE Entrance Board", href: "https://www.jkbopee.gov.in" },
+    { label: "J&K Higher Education Samarth", href: "https://jk.samarth.ac.in" },
+    { label: "Directorate of Skill Development J&K", href: "https://jkdsd.in" },
+    { label: "JK Public Service Commission (JKPSC)", href: "https://jkpsc.nic.in" },
+    { label: "JK Services Selection Board (JKSSB)", href: "https://jkssb.nic.in" },
+    { label: "JKBOSE Official Board", href: "https://jkbose.nic.in" },
   ];
 
   const journeyLinks = [
-    { label: "About You", to: "/dashboard/profile" },
-    { label: "Discover Yourself", to: "/dashboard/assess" },
-    { label: "Possible Directions", to: "/dashboard/directions" },
+    { label: "About You", to: "/dashboard/journey" },
+    { label: "Possible Directions", to: "/dashboard/streams" },
     { label: "Where You Can Study", to: "/dashboard/colleges" },
     { label: "Compare Options", to: "/dashboard/compare" },
     { label: "Your Next Step", to: "/dashboard/nextstep" },
@@ -27,10 +26,10 @@ export function Footer() {
             <div className="p-2 rounded-full bg-[#ff7f46] text-white">
               <GraduationCap className="h-4 w-4" />
             </div>
-            CareerNova | J&K Education
+            CareerNova | J&K Higher Education
           </div>
           <p className="max-w-sm leading-relaxed text-[#94a3b8]">
-            Factual education guidance for Jammu & Kashmir students after Class 12. Grounded in verified institutional records and official government portals.
+            Factual education guidance for Jammu & Kashmir students after Class 10 and Class 12. Grounded in verified institutional records and official government portals.
           </p>
         </div>
 

@@ -165,7 +165,7 @@ function NextStepPage() {
               <p className="text-xs text-muted-foreground leading-relaxed">{portal.desc}</p>
             </div>
 
-            <Button asChild shrink-0 size="sm">
+            <Button asChild size="sm" className="shrink-0">
               <a href={portal.url} target="_blank" rel="noreferrer" className="flex items-center gap-1.5">
                 Visit Website <ExternalLink className="h-3.5 w-3.5" />
               </a>
@@ -175,7 +175,7 @@ function NextStepPage() {
       </div>
 
       {/* Action Navigation */}
-      <div className="flex justify-between items-center pt-4">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4">
         <Button
           variant="outline"
           onClick={() => navigate({ to: isClass10 ? "/dashboard/streams" : "/dashboard/compare" })}

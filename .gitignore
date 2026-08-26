@@ -35,5 +35,7 @@ dist-ssr/
 *.suo
 *.ntvs*
 *.njsproj
-*.sln
-*.sw?
+# Test & Audit Scripts
+src/lib/test_*.ts
+scripts/test-*.ts
+scripts/verify-data.ts

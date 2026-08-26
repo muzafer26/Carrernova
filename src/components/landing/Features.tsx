@@ -26,8 +26,8 @@ const groundedFeatures = [
 const steps = [
   {
     num: "01",
-    title: "About You",
-    desc: "Select your class level, academic stream (Science, Commerce, Arts), and preferred subjects.",
+    title: "Academic Stage",
+    desc: "Specify Class 10 or Class 12, your district, and core educational background.",
     icon: User,
     theme: {
       bgCircle: "bg-[#3a86ff]",
@@ -37,9 +37,9 @@ const steps = [
   },
   {
     num: "02",
-    title: "Discover Yourself",
-    desc: "Answer brief preference questions to highlight higher study fields matching your interests.",
-    icon: Brain,
+    title: "Stream & Subjects",
+    desc: "Select Science (PCM/PCB), Commerce, Arts, or 10th stream preference.",
+    icon: Compass,
     theme: {
       bgCircle: "bg-[#ff7f46]",
       borderColor: "border-l-[#ff7f46]",
@@ -48,9 +48,9 @@ const steps = [
   },
   {
     num: "03",
-    title: "Possible Directions",
-    desc: "View matching fields of study tailored to your stream qualification with clear explanations.",
-    icon: Compass,
+    title: "Goal & Curiosity",
+    desc: "Target University Degrees, Vocational Skills/ITI, Government Exams, or explore if Unsure.",
+    icon: Brain,
     theme: {
       bgCircle: "bg-[#ff5252]",
       borderColor: "border-l-[#ff5252]",
@@ -59,9 +59,9 @@ const steps = [
   },
   {
     num: "04",
-    title: "Explore Colleges",
-    desc: "Review verified degree courses, eligibility rules, and entrance exam requirements.",
-    icon: GraduationCap,
+    title: "Affordability Support",
+    desc: "Specify fee preferences to identify PMSSS & Post-Matric scholarship eligibility.",
+    icon: Shield,
     theme: {
       bgCircle: "bg-[#9dbd00]",
       borderColor: "border-l-[#9dbd00]",
@@ -70,9 +70,9 @@ const steps = [
   },
   {
     num: "05",
-    title: "Where You Can Study",
-    desc: "Find verified Government Degree Colleges in J&K offering your chosen program by district.",
-    icon: ArrowLeftRight,
+    title: "Decision Summary",
+    desc: "Review your transparent profile matrix before inspecting options.",
+    icon: CheckCircle2,
     theme: {
       bgCircle: "bg-[#8c52ff]",
       borderColor: "border-l-[#8c52ff]",
@@ -81,8 +81,41 @@ const steps = [
   },
   {
     num: "06",
-    title: "Your Next Step",
-    desc: "Access direct links to official J&K higher education portals for admission counseling.",
+    title: "Pathways Matrix",
+    desc: "View ranked and stream-gated degree, skill diploma, and government career options.",
+    icon: GraduationCap,
+    theme: {
+      bgCircle: "bg-[#00d6d3]",
+      borderColor: "border-l-[#00d6d3]",
+      glow: "hover:shadow-[#00d6d3]/20",
+    },
+  },
+  {
+    num: "07",
+    title: "01–09 Pathway Breakdown",
+    desc: "Examine statutory eligibility, NEP-2020 curriculum, verified colleges & outcomes.",
+    icon: ExternalLink,
+    theme: {
+      bgCircle: "bg-[#ff7f46]",
+      borderColor: "border-l-[#ff7f46]",
+      glow: "hover:shadow-[#ff7f46]/20",
+    },
+  },
+  {
+    num: "08",
+    title: "Locality & Map",
+    desc: "Locate verified Government Degree Colleges in your district with interactive maps.",
+    icon: ArrowLeftRight,
+    theme: {
+      bgCircle: "bg-[#3a86ff]",
+      borderColor: "border-l-[#3a86ff]",
+      glow: "hover:shadow-[#3a86ff]/20",
+    },
+  },
+  {
+    num: "09",
+    title: "Official Action",
+    desc: "Access verified links to J&K Samarth, J&K DSD ITI, and JKPSC/JKSSB portals.",
     icon: CheckCircle2,
     theme: {
       bgCircle: "bg-[#00d6d3]",
@@ -107,7 +140,7 @@ export function Features() {
             </div>
             <h2 className="text-3xl md:text-5xl font-extrabold font-display text-[#0f2239]">How It Works</h2>
             <p className="text-sm md:text-base text-[#636363] max-w-xl mx-auto">
-              A clear 6-step guided path for Class 10 and Class 12 students in Jammu & Kashmir.
+              A clear 9-step guided path for Class 10 and Class 12 students in Jammu & Kashmir.
             </p>
           </div>
 

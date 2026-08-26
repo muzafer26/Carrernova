@@ -11,25 +11,25 @@ const verifiedStreams: {
   sticker: StickerName;
 }[] = [
   {
-    title: "Sciences & Technology",
-    desc: "Fields including Computer Science, Information Technology, Biotechnology, Chemistry, and Botanical Sciences.",
-    courses: ["B.Sc Computer Application", "B.Sc Biotechnology", "B.Sc Botany & Chemistry"],
-    link: "/dashboard/directions",
+    title: "Class 10 Stream & ITI Trades",
+    desc: "Decide between JKBOSE Science, Commerce, and Arts streams, or explore immediate NSQF ITI trade diplomas.",
+    courses: ["Science Stream (11–12)", "Commerce Stream", "Arts Stream", "ITI Computer Hardware"],
+    link: "/dashboard/journey",
+    sticker: "books",
+  },
+  {
+    title: "NEP-2020 4-Year Degrees (10+2)",
+    desc: "4-Year FYUGP degree programs available across verified J&K Government Degree Colleges by district.",
+    courses: ["B.Sc Computer Application", "B.Sc Biotechnology", "B.Com (Hons)", "BBA", "B.A. Social Sciences"],
+    link: "/dashboard/journey",
     sticker: "microscope",
   },
   {
-    title: "Commerce & Management",
-    desc: "Fields including Accounting, Business Administration, Commerce, Finance, and Enterprise Management.",
-    courses: ["B.Com (General / Honors)", "BBA (Business Administration)"],
-    link: "/dashboard/directions",
-    sticker: "calculator",
-  },
-  {
-    title: "Arts & Humanities",
-    desc: "Fields including Literature, Languages, Economics, Political Science, Education, and Regional Studies.",
-    courses: ["B.A. Humanities", "B.A. Dogri / Languages", "B.A. Economics"],
-    link: "/dashboard/directions",
-    sticker: "books",
+    title: "Vocational Skills & Govt Cadres",
+    desc: "Direct practical entry via ITI technical diplomas or long-term preparation for JKPSC & JKSSB competitive cadres.",
+    courses: ["NSQF Level 4/5 ITI Trade", "JKPSC Civil Services CCE", "JKSSB Executive Cadres"],
+    link: "/dashboard/journey",
+    sticker: "trophy",
   },
 ];
 
@@ -47,15 +47,15 @@ export function Careers() {
             What You Can Explore
           </h2>
           <p className="text-sm md:text-base text-[#636363] max-w-2xl mx-auto">
-            Explore verified undergraduate degree programs across government degree colleges in Jammu & Kashmir.
+            Explore verified undergraduate degree programs, Class 10 stream options, and skill trade pathways across Jammu & Kashmir.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {verifiedStreams.map((st, idx) => {
             const colors = [
-              { border: "border-l-4 border-l-[#4582ff]", iconBg: "bg-[#4582ff]" },
               { border: "border-l-4 border-l-[#ff7f46]", iconBg: "bg-[#ff7f46]" },
+              { border: "border-l-4 border-l-[#4582ff]", iconBg: "bg-[#4582ff]" },
               { border: "border-l-4 border-l-[#00d6d3]", iconBg: "bg-[#00d6d3]" },
             ];
             const colorScheme = colors[idx % colors.length];
@@ -79,7 +79,7 @@ export function Careers() {
                   <p className="text-xs text-[#636363] leading-relaxed">{st.desc}</p>
 
                   <div className="pt-2 space-y-1.5">
-                    <span className="text-[11px] font-bold text-[#0f2239] uppercase tracking-wider">Example Programs:</span>
+                    <span className="text-[11px] font-bold text-[#0f2239] uppercase tracking-wider">Covered Pathways:</span>
                     <div className="flex flex-wrap gap-1.5">
                       {st.courses.map((c) => (
                         <Badge key={c} variant="secondary" className="text-[11px] bg-slate-100 text-[#0f2239] border border-slate-200">
@@ -93,9 +93,9 @@ export function Careers() {
                 <div className="pt-4 border-t border-slate-100">
                   <Link
                     to={st.link}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#ff7f46] hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#ff7f46] hover:underline font-display"
                   >
-                    Explore Stream Options <ArrowRight className="h-3.5 w-3.5" />
+                    Explore Options <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

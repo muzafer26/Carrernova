@@ -232,7 +232,7 @@ function OutcomesPage() {
           )}
 
           {/* Action Navigation */}
-          <div className="pt-4 flex items-center justify-between border-t border-white/10">
+          <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-white/10">
             <Button
               variant="outline"
               onClick={() =>

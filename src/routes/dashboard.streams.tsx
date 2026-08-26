@@ -296,7 +296,7 @@ function Class10StreamsPage() {
       </Card>
 
       {/* Navigation */}
-      <div className="flex justify-between items-center pt-2">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
         <Button variant="outline" onClick={() => navigate({ to: "/dashboard/profile" })}>
           ← Back to About You
         </Button>
@@ -304,8 +304,9 @@ function Class10StreamsPage() {
           href="https://jkbose.jk.gov.in"
           target="_blank"
           rel="noreferrer"
+          className="w-full sm:w-auto"
         >
-          <Button variant="secondary" className="flex items-center gap-2">
+          <Button variant="secondary" className="w-full flex items-center justify-center gap-2">
             Official JKBOSE Portal <ExternalLink className="h-3.5 w-3.5" />
           </Button>
         </a>

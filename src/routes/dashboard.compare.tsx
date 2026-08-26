@@ -138,14 +138,14 @@ function ComparePage() {
                   Bookmark degrees, ITI skill options, or government career pathways while exploring to compare them together in this workspace.
                 </p>
               </div>
-              <div className="flex items-center justify-center gap-3 pt-2">
-                <Button onClick={() => navigate({ to: "/dashboard/directions" })} size="sm">
+              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center gap-2.5 pt-2">
+                <Button onClick={() => navigate({ to: "/dashboard/directions" })} size="sm" className="w-full sm:w-auto">
                   Explore Degree Directions →
                 </Button>
-                <Button onClick={() => navigate({ to: "/dashboard/skills" })} variant="outline" size="sm">
+                <Button onClick={() => navigate({ to: "/dashboard/skills" })} variant="outline" size="sm" className="w-full sm:w-auto">
                   Explore ITI & Vocational Skills →
                 </Button>
-                <Button onClick={() => navigate({ to: "/dashboard/govt-pathways" })} variant="outline" size="sm">
+                <Button onClick={() => navigate({ to: "/dashboard/govt-pathways" })} variant="outline" size="sm" className="w-full sm:w-auto">
                   Explore Govt Pathways →
                 </Button>
               </div>
@@ -472,7 +472,7 @@ function ComparePage() {
       )}
 
       {/* Footer Navigation */}
-      <div className="flex justify-between items-center pt-4">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4">
         <Button variant="outline" onClick={() => navigate({ to: "/dashboard/colleges" })}>
           ← Back to Colleges
         </Button>

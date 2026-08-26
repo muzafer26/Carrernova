@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { User, Brain, Compass, GraduationCap, ArrowLeftRight, CheckCircle2, ArrowRight } from "lucide-react";
+import { User, Compass, GraduationCap, ArrowLeftRight, CheckCircle2, ArrowRight, BookOpen } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
@@ -22,28 +22,28 @@ function DashboardOverview() {
   }, []);
 
   const steps = [
-    { title: "1. About You", desc: "Select class level, stream, and topics you enjoy", to: "/dashboard/profile", icon: User },
-    { title: "2. Discover Preferences", desc: "Share your preferences to highlight relevant options", to: "/dashboard/assess", icon: Brain },
-    { title: "3. Academic Degree Pathways", desc: "Explore undergraduate degree options under NEP FYUGP", to: "/dashboard/directions", icon: Compass },
-    { title: "4. Skill & ITI Vocational Explorer", desc: "Discover job-ready ITI & NSQF skill certificate pathways", to: "/dashboard/skills", icon: Compass },
-    { title: "5. Government Career Pathways", desc: "Backward map target JKPSC & JKSSB cadres to degree paths", to: "/dashboard/govt-pathways", icon: Compass },
-    { title: "6. Decision Workspace & Shortlist", desc: "Save and compare your shortlisted options side-by-side", to: "/dashboard/compare", icon: ArrowLeftRight },
+    { title: "1. My Guided Journey", desc: "Resume your 1-question-at-a-time decision exploration", to: "/dashboard/profile", icon: User },
+    { title: "2. Academic Degree Pathways", desc: "Explore undergraduate degree options under NEP FYUGP", to: "/dashboard/directions", icon: Compass },
+    { title: "3. Skill & ITI Vocational Explorer", desc: "Discover job-ready ITI & NSQF skill certificate trades", to: "/dashboard/skills", icon: Compass },
+    { title: "4. Government Career Pathways", desc: "Backward map target JKPSC & JKSSB cadres to degree paths", to: "/dashboard/govt-pathways", icon: Compass },
+    { title: "5. Decision Workspace & Compare", desc: "Save and compare your shortlisted options side-by-side", to: "/dashboard/compare", icon: ArrowLeftRight },
+    { title: "6. Official Next Steps & Portals", desc: "Direct handoffs to JK SAMARTH, BOPEE & NSP portals", to: "/dashboard/nextstep", icon: CheckCircle2 },
   ];
 
   const isClass10 = profile ? isClass10Profile(profile) : false;
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 py-6 font-sans">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <span className="text-xs font-black uppercase tracking-wider text-[#4582ff] font-display">
-            WORKSPACES & OVERVIEW
+            LEVEL 8 • DESTINATION WORKSPACE
           </span>
           <h1 className="text-2xl md:text-3xl font-extrabold font-display text-[#0f2239]">
-            J&K Student Career & Education System
+            J&K Education Decision Navigator
           </h1>
           <p className="text-xs md:text-sm text-[#636363] mt-1 font-sans">
-            Factual education guidance for Jammu & Kashmir students (Class 10 & Class 12).
+            Verified evidence-based guidance for Jammu & Kashmir students (Class 10 & Class 12).
           </p>
         </div>
 
@@ -51,7 +51,7 @@ function DashboardOverview() {
           to="/dashboard/profile"
           className="bg-[#ff7f46] hover:bg-[#e66c35] text-white font-extrabold text-xs uppercase tracking-wider px-6 py-3.5 rounded-2xl shadow-lg transition flex items-center gap-2 font-display shrink-0"
         >
-          <span>Launch Guided Journey</span>
+          <span>Launch Guided Advisor</span>
           <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
@@ -62,21 +62,21 @@ function DashboardOverview() {
             <Sticker name="pathway" size="lg" animate={false} />
             <div>
               <span className="text-xs font-bold text-[#4582ff] uppercase tracking-wider font-display">
-                {profile ? "Your Active Profile" : "Start Guided Exploration"}
+                {profile ? "Active Saved Journey" : "Start Guided Exploration"}
               </span>
               <h2 className="text-xl font-extrabold font-display text-[#0f2239] mt-0.5">
                 {profile
                   ? isClass10
                     ? "Class 10 • Stream Exploration"
-                    : `${profile.class} • ${profile.stream}`
+                    : `Class ${profile.class} • ${profile.stream}`
                   : "Find Education Pathways & Colleges in J&K"}
               </h2>
               <p className="text-xs text-[#636363] mt-1 leading-relaxed max-w-xl">
                 {profile
                   ? isClass10
                     ? "Explore stream options (Science, Commerce, Arts) for Class 11/12 under JKBOSE."
-                    : `Interests: ${profile.interests.join(", ") || "General"}. Tailored degree programs across J&K Government Degree Colleges.`
-                  : "Answer one decision at a time to discover degree programs, eligibility, and verified government colleges across J&K."}
+                    : `Interests: ${profile.interests.join(", ") || "General"}. Sourced options across J&K Government Degree Colleges.`
+                  : "Answer one question at a time to discover degree programs, eligibility, and verified government colleges across J&K."}
               </p>
             </div>
           </div>
@@ -85,13 +85,13 @@ function DashboardOverview() {
               to="/dashboard/profile"
               className="flex items-center gap-2"
             >
-              Resume Story Journey <ArrowRight className="h-4 w-4" />
+              Resume Guided Journey <ArrowRight className="h-4 w-4" />
             </Link>
           </Button>
         </div>
       </Card>
 
-      {/* Workspace Navigation Grid */}
+      {/* Destination Workspace Tools */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {steps.map((step) => (
           <Link key={step.to} to={step.to} className="block group">
