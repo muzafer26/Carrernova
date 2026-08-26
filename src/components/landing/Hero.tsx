@@ -90,13 +90,13 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center items-center relative py-6">
             {/* Floating Decorative 3D Stickers */}
             <div className="absolute top-2 left-2 sm:left-6 z-20">
-              <Sticker name="books" size="md" className="rotate-[-14deg] shadow-xl" />
+              <Sticker name="books" size="md" priority className="rotate-[-14deg] shadow-xl" />
             </div>
             <div className="absolute -bottom-4 right-2 sm:right-4 z-20">
-              <Sticker name="college" size="md" className="rotate-[14deg] shadow-xl" />
+              <Sticker name="college" size="md" priority className="rotate-[14deg] shadow-xl" />
             </div>
             <div className="absolute top-1/2 -right-6 -translate-y-1/2 z-20 hidden sm:block">
-              <Sticker name="trophy" size="sm" className="rotate-[-8deg] shadow-lg" />
+              <Sticker name="trophy" size="sm" priority className="rotate-[-8deg] shadow-lg" />
             </div>
 
             {/* Main Exploration First Card Container */}
@@ -107,7 +107,7 @@ export function Hero() {
               className="relative p-6 sm:p-8 bg-white rounded-3xl border border-slate-200/80 shadow-2xl flex flex-col items-center text-center space-y-4 sm:space-y-5 max-w-[280px] sm:max-w-[300px] w-full"
             >
               <div className="p-3 sm:p-4 rounded-2xl bg-slate-50 border border-slate-100 shadow-inner flex items-center justify-center">
-                <Sticker name="graduate" size="xl" animate={false} />
+                <Sticker name="graduate" size="xl" priority animate={false} />
               </div>
               <div className="space-y-1.5">
                 <h3 className="font-display font-extrabold text-lg sm:text-xl text-[#0f2239]">
