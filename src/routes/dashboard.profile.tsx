@@ -5,7 +5,7 @@ export const Route = createFileRoute("/dashboard/profile")({
   component: ProfilePage,
 });
 
-export default function ProfilePage() {
+function ProfilePage() {
   return <GuidedStoryJourney />;
 }
 

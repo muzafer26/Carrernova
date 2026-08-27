@@ -3,6 +3,6 @@ import { GuidedStoryJourney } from "@/components/journey/GuidedStoryJourney";
 
 export const Route = createFileRoute("/dashboard/journey")({ component: JourneyPage });
 
-export default function JourneyPage() {
+function JourneyPage() {
   return <GuidedStoryJourney />;
 }

@@ -4,7 +4,7 @@ import { Sticker } from "@/components/ui/Sticker";
 
 export const Route = createFileRoute("/dashboard/mentor")({ component: MentorPage });
 
-export default function MentorPage() {
+function MentorPage() {
   return (
     <div className="max-w-5xl mx-auto space-y-8 py-4">
       {/* Header Banner */}
