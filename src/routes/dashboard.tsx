@@ -261,7 +261,7 @@ function DashboardLayout() {
 
               <div className="pt-3 border-t border-slate-100">
                 <div className="text-[10px] font-bold text-[#636363]">J&K Student Session</div>
-                <div className="text-xs font-extrabold text-[#0f2239] truncate">{activeUser.email}</div>
+                <div className="text-xs font-extrabold text-[#0f2239] truncate">Decision Navigator Active</div>
               </div>
             </motion.aside>
           </>
