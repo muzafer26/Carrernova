@@ -77,11 +77,14 @@ function DashboardLayout() {
           <div className="flex items-center gap-2 sm:gap-3">
             <Link
               to="/dashboard"
-              className="text-[11px] sm:text-xs font-extrabold text-[#0f2239] hover:text-[#ff7f46] bg-slate-100 hover:bg-slate-200/80 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-xl transition font-display flex items-center gap-1.5"
+              className="text-[11px] sm:text-xs font-extrabold text-white bg-gradient-to-r from-[#0f2239] via-[#1a365d] to-[#0f2239] hover:from-[#ff7f46] hover:to-[#e66c35] px-3 sm:px-4 py-2 rounded-2xl transition-all duration-300 font-display flex items-center gap-2 shadow-lg ring-2 ring-[#4582ff]/40 hover:ring-[#ff7f46]/50 group cursor-pointer"
             >
-              <Compass className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#ff7f46]" />
-              <span className="hidden xs:inline">Overview & All Workspaces</span>
-              <span className="xs:hidden">Overview</span>
+              <Compass className="h-4 w-4 text-[#ff7f46] group-hover:text-white transition-colors" />
+              <span className="hidden xs:inline font-display">Overview & Workspaces</span>
+              <span className="xs:hidden font-display">Overview</span>
+              <span className="bg-[#ff7f46] group-hover:bg-white group-hover:text-[#ff7f46] text-white text-[9px] font-black uppercase px-1.5 py-0.5 rounded-md tracking-wider font-display transition-colors">
+                HUB
+              </span>
             </Link>
 
             <button

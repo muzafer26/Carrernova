@@ -1,213 +1,64 @@
-# CareerNova AI 🚀
+# CareerNova • J&K Education & Career Navigator
 
-CareerNova AI is a modern AI-powered career development platform designed to help students, developers, and job seekers grow their careers using intelligent tools, AI guidance, job discovery, resume analysis, and learning resources — all in one platform.
+CareerNova is a personalized education and career decision navigator built specifically for students in Jammu & Kashmir (Class 10 and Class 12). 
 
----
-
-# 🌟 Features
-
-## 🤖 AI Mentor
-
-An intelligent AI-powered mentor that helps users with:
-
-* Career guidance
-* Learning roadmaps
-* Technology recommendations
-* Interview preparation
-* Coding advice
-* Skill development
-* Career planning
-
-Powered by Groq Llama AI.
+Choosing what to study after 10th or 12th in J&K can be confusing with changing NEP 2020 guidelines, entrance exams, and college choices. CareerNova helps students explore eligible degree options, vocational ITI skill trades, and government service exam paths through evidence-based data and official rules.
 
 ---
 
-## 📄 Resume Analyzer
+## 🌟 Key Features
 
-Upload your resume and receive:
+### 1. Guided 9-Step Decision Journey
+A step-by-step walkthrough that guides students through:
+* **Academic Stage Selection** (Class 10 vs. Class 12)
+* **Locality & Stream Selection** (All 20 J&K Districts + Class 12 Streams)
+* **Curiosity & Interest Mapping** (Finding matching fields without forcing rigid career choices)
+* **Pathway Deep Dives** (Statutory eligibility, core subjects, scholarships, and outcomes)
+* **Interactive J&K College Map** (Finding nearby Government Degree Colleges offering specific courses)
+* **Side-by-Side Neutral Comparison** (Objective comparisons without fake "AI score" ratings)
+* **Official Next Steps** (Direct registration links to J&K Samarth & official portals)
 
-* ATS Score Analysis
-* Skill Gap Detection
-* Resume Feedback
-* Keyword Optimization
-* Career Fit Suggestions
-* Improvement Recommendations
+### 2. Stage-Aware Educational Flows
+* **Class 10 Students**: Explore JKBOSE stream choices (Science, Commerce, Arts) or immediate practical ITI trade diplomas.
+* **Class 12 Students**: Explore 4-Year NEP Undergraduate degrees (B.Sc, BCA, B.Com, B.A., BBA), NSQF vocational skill diplomas, or backward-map target government exam cadres (JKPSC / JKSSB).
 
----
+### 3. J&K Government College Locator Map
+An interactive OpenStreetMap tool showing verified Government Degree Colleges (GDCs) across Jammu and Kashmir divisions, filtered by district and course availability.
 
-## 💼 Jobs & Internships
-
-Search and explore:
-
-* Remote Jobs
-* AI/ML Roles
-* Frontend & Backend Jobs
-* Internships
-* Full-Time Opportunities
-* International Opportunities
-
-Integrated with real job APIs.
-
----
-
-## 📚 Resources & Learning Hub
-
-Access:
-
-* Programming Books
-* Learning Resources
-* Educational Platforms
-* Career Materials
-* Development Guides
-* Curated Learning Content
+### 4. Verified Government & Scholarship Resources
+Direct handoffs to official portals:
+* **J&K Samarth Higher Education Admission Portal** (`jk.samarth.ac.in`)
+* **JKBOSE Board Official Syllabus & Streams**
+* **J&K Department of Skill Development (DSD ITI)**
+* **JKPSC & JKSSB Official Recruitment Rules**
+* **PMSSS (AICTE) & Post-Matric Scholarship Portals**
 
 ---
 
-## 🧠 AI Career Quiz
+## 🛠️ Tech Stack
 
-Take a smart AI-based quiz to discover:
-
-* Best career paths
-* Suitable tech domains
-* Personalized recommendations
-* Strength analysis
-* Learning directions
+* **Frontend**: React, Vite, TypeScript, TanStack Router
+* **Styling & UI**: Tailwind CSS, Framer Motion, Lucide Icons
+* **Maps & Visuals**: OpenStreetMap / Leaflet, Canvas Confetti
 
 ---
 
-## 🛣️ Career Roadmaps
+## 🚀 Getting Started
 
-Explore roadmaps for:
-
-* Frontend Development
-* Backend Development
-* Full Stack Development
-* AI Engineering
-* Data Science
-* Cybersecurity
-* Cloud Computing
-* App Development
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-* React.js
-* Vite
-* TypeScript
-* Tailwind CSS
-* Framer Motion
-
-## Backend
-
-* Vercel Serverless Functions
-* Supabase
-
-## APIs & AI
-
-* Groq API
-* Adzuna API
-* Open Library API
-
----
-
-# 🔐 Authentication
-
-* Supabase Authentication
-* Secure Login & Signup
-* Protected Routes
-* Session Management
-
----
-
-# 🌐 Live Demo
-
-https://career-nova-ai-ryoo.vercel.app/
-
----
-
-# ⚡ Installation
-
-## Clone Repository
-
+### 1. Clone & Install
 ```bash
 git clone https://github.com/Ankit-Raskar/CareerNova-AI.git
-```
-
----
-
-## Navigate to Project Folder
-
-```bash
 cd CareerNova-AI
-```
-
----
-
-## Install Dependencies
-
-```bash
 npm install
 ```
 
----
-
-## Start Development Server
-
+### 2. Run Locally
 ```bash
 npm run dev
 ```
+Open `http://localhost:5173` in your browser.
 
 ---
 
-# 🔑 Environment Variables
-
-Create a `.env` file in the root directory and add:
-
-```env
-VITE_SUPABASE_URL=your_supabase_url
-
-VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-
-GROQ_API_KEY=your_groq_api_key
-
-ADZUNA_APP_ID=your_adzuna_app_id
-
-ADZUNA_APP_KEY=your_adzuna_app_key
-```
-
----
-
-# 🚀 Deployment
-
-This project is deployed using:
-
-* GitHub
-* Vercel
-
----
-
-# 📌 Future Improvements
-
-* AI Mock Interviews
-* Resume Builder
-* Portfolio Generator
-* AI Voice Mentor
-* Skill Tracking Dashboard
-* Community Features
-* Personalized AI Recommendations
-
----
-
-# 👨‍💻 Developer
-
-## Ankit Raskar
-
-BCA Student | Web Developer | AI Enthusiast
-
-GitHub:
-https://github.com/Ankit-Raskar
-
----
+## 🔒 Data & Verification
+All college locations, eligibility rules, stream prerequisites, and scholarship details used in CareerNova are sourced directly from official J&K government notifications (Directorate of Higher Education J&K, JKBOSE, DSD, and JKPSC).

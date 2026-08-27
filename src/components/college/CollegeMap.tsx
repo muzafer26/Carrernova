@@ -1,5 +1,5 @@
-import { useState, useMemo } from "react";
-import { MapPin, Building2, Search, ExternalLink, GraduationCap, Compass } from "lucide-react";
+import { useState, useMemo, useEffect } from "react";
+import { MapPin, Building2, Search, ExternalLink, GraduationCap, Compass, AlertCircle } from "lucide-react";
 import { jkColleges } from "@/data/jk-colleges";
 import type { JKCollege } from "@/types/ps09";
 import { Card } from "@/components/ui/card";

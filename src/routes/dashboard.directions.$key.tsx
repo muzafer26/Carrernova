@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { JourneyProgress } from "@/components/JourneyProgress";
 import { getDirectionByKey, isClass10Profile } from "@/lib/directions";
+import { toggleShortlistItem } from "@/lib/shortlist";
 import { jkColleges } from "@/data/jk-colleges";
 import type { StudentProfile } from "@/types/ps09";
 import { Sticker } from "@/components/ui/Sticker";
@@ -98,7 +99,6 @@ function DirectionDetailPage() {
                     size="sm"
                     variant="outline"
                     onClick={() => {
-                      const { toggleShortlistItem } = require("@/lib/shortlist");
                       toggleShortlistItem({
                         id: `degree-${course.key}`,
                         type: "degree",

@@ -296,8 +296,12 @@ export function GuidedStoryJourney() {
     (g) => g.key === journey.selectedCourseKey
   );
 
-  // Active pathway resolution (strictly explicit selection)
-  const activeCourse = currentCourse;
+  // Active pathway resolution (strictly explicit selection with safe fallback)
+  const activeCourse =
+    currentCourse ||
+    (journey.classLevel === "12" && !currentSkill && !currentGovt
+      ? rankedCourseMatches[0]?.course || directions[0]?.courses[0]
+      : undefined);
   const activeClass10 = currentClass10Stream;
   const activeSkill = currentSkill;
   const activeGovt = currentGovt;
@@ -334,20 +338,31 @@ export function GuidedStoryJourney() {
           </div>
         </div>
 
-        {/* Minimal Progress Dots */}
-        <div className="flex items-center gap-1.5 self-end sm:self-auto">
-          {Array.from({ length: totalSteps }).map((_, i) => (
-            <div
-              key={i}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i + 1 === step
-                  ? "w-6 sm:w-8 bg-[#ff7f46]"
-                  : i + 1 < step
-                  ? "w-2 bg-[#4582ff]"
-                  : "w-2 bg-slate-200"
-              }`}
-            />
-          ))}
+        {/* Overview Hub Quick Link & Minimal Progress Dots */}
+        <div className="flex items-center gap-3 self-end sm:self-auto">
+          <Link
+            to="/dashboard"
+            className="px-3 py-1.5 rounded-xl bg-[#0f2239] text-white hover:bg-[#ff7f46] text-xs font-extrabold font-display flex items-center gap-1.5 shadow-md transition cursor-pointer group"
+          >
+            <Compass className="h-3.5 w-3.5 text-[#ff7f46] group-hover:text-white transition-colors" />
+            <span className="hidden sm:inline">Overview Hub</span>
+            <span className="bg-[#ff7f46] group-hover:bg-white group-hover:text-[#ff7f46] text-white text-[9px] font-black px-1.5 py-0.5 rounded uppercase font-display transition-colors">HUB</span>
+          </Link>
+
+          <div className="flex items-center gap-1.5">
+            {Array.from({ length: totalSteps }).map((_, i) => (
+              <div
+                key={i}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i + 1 === step
+                    ? "w-6 sm:w-8 bg-[#ff7f46]"
+                    : i + 1 < step
+                    ? "w-2 bg-[#4582ff]"
+                    : "w-2 bg-slate-200"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -947,8 +962,20 @@ export function GuidedStoryJourney() {
                                 <span className="text-[#636363]">{sk.careerProspects.join(", ")}</span>
                               </div>
                             </div>
-                            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                              <span className="text-[11px] text-slate-500">{sk.conductingAuthority}</span>
+                            <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
+                              <button
+                                onClick={() => {
+                                  updateJourney({
+                                    selectedCourseKey: sk.key,
+                                    selectedPathwayFamily: "vocational-skills",
+                                  });
+                                  setStep(7);
+                                }}
+                                className="bg-[#ff7f46] hover:bg-[#e66c35] text-white font-extrabold text-xs uppercase tracking-wider px-4 py-2 rounded-xl shadow-sm transition flex items-center gap-1.5 font-display cursor-pointer"
+                              >
+                                <span>Understand ITI Trade</span>
+                                <ArrowRight className="h-3.5 w-3.5" />
+                              </button>
                               <a href={sk.source.url} target="_blank" rel="noreferrer" className="text-xs font-extrabold text-[#ff7f46] hover:underline inline-flex items-center gap-1 font-display">
                                 Official Portal <ExternalLink className="h-3 w-3" />
                               </a>
@@ -979,7 +1006,22 @@ export function GuidedStoryJourney() {
                               </span>
                               <span className="text-[11px] font-bold text-slate-500 font-display">Authority: {gp.conductingAuthority}</span>
                             </div>
-                            <h3 className="font-extrabold font-display text-lg text-[#0f2239]">{gp.targetCadre}</h3>
+                            <div className="flex items-center justify-between gap-2">
+                              <h3 className="font-extrabold font-display text-lg text-[#0f2239]">{gp.targetCadre}</h3>
+                              <button
+                                onClick={() => {
+                                  updateJourney({
+                                    selectedCourseKey: gp.key,
+                                    selectedPathwayFamily: "govt-cadre",
+                                  });
+                                  setStep(7);
+                                }}
+                                className="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs uppercase tracking-wider px-4 py-2 rounded-xl shadow-sm transition flex items-center gap-1.5 font-display shrink-0 cursor-pointer"
+                              >
+                                <span>Understand Govt Cadre</span>
+                                <ArrowRight className="h-3.5 w-3.5" />
+                              </button>
+                            </div>
                             <p className="text-xs text-[#636363] leading-relaxed">{gp.summary}</p>
 
                             {/* Goverment Career Hierarchy Breakdown */}
@@ -998,7 +1040,7 @@ export function GuidedStoryJourney() {
                               </div>
                               <div className="p-3 bg-slate-50 rounded-xl border border-slate-200/60">
                                 <div className="text-[10px] font-black text-[#4582ff] font-display uppercase">4. Selection</div>
-                                <div className="font-bold text-[#0f2239]">Merit / CBT / Interview</div>
+                                <div className="font-[#0f2239] font-bold">Merit / CBT / Interview</div>
                               </div>
                             </div>
 
@@ -1121,7 +1163,7 @@ export function GuidedStoryJourney() {
               exit={{ opacity: 0, y: -16 }}
               className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-xl space-y-8"
             >
-              {!hasExplicitSelection ? (
+              {!hasExplicitSelection && !activeCourse && !activeSkill && !activeGovt && !activeClass10 ? (
                 <div className="space-y-6">
                   <div className="p-6 bg-[#e8f1ff] border border-[#d0e2ff] rounded-3xl space-y-2">
                     <div className="flex items-center gap-2 text-[#4582ff] font-extrabold text-xs uppercase font-display">
@@ -1153,19 +1195,22 @@ export function GuidedStoryJourney() {
                             <p className="text-xs text-[#636363] line-clamp-2">{st.whatYouLearn}</p>
                           </button>
                         ))
-                      : rankedCourseMatches.map((m) => (
+                      : (rankedCourseMatches.length > 0
+                          ? rankedCourseMatches.map((m) => m.course)
+                          : directions.flatMap((d) => d.courses)
+                        ).map((c) => (
                           <button
-                            key={m.course.key}
-                            onClick={() => updateJourney({ selectedCourseKey: m.course.key })}
+                            key={c.key}
+                            onClick={() => updateJourney({ selectedCourseKey: c.key })}
                             className="p-5 bg-slate-50 hover:bg-white rounded-3xl border border-slate-200 hover:border-[#4582ff] text-left transition shadow-2xs hover:shadow-md space-y-2 cursor-pointer group"
                           >
                             <span className="text-[10px] font-black uppercase text-[#4582ff] bg-[#4582ff]/10 px-2.5 py-0.5 rounded-full font-display">
-                              {m.matchCategory}
+                              Degree Pathway
                             </span>
                             <h4 className="font-extrabold font-display text-base text-[#0f2239] group-hover:text-[#4582ff] transition">
-                              {m.course.label}
+                              {c.label}
                             </h4>
-                            <p className="text-xs text-[#636363] line-clamp-2">{m.course.description}</p>
+                            <p className="text-xs text-[#636363] line-clamp-2">{c.description}</p>
                           </button>
                         ))}
                   </div>
@@ -1286,7 +1331,120 @@ export function GuidedStoryJourney() {
                     </div>
                   )}
                 </>
-              ) : (activeCourse || activeSkill || activeGovt) ? (
+              ) : activeSkill ? (
+                <>
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-[#ff7f46] font-display">
+                        PATHWAY DEEP DIVE • ITI VOCATIONAL TRADE ({activeSkill.nsqfLevel})
+                      </span>
+                      <h2 className="text-3xl font-extrabold font-display text-[#0f2239]">
+                        {activeSkill.label}
+                      </h2>
+                      <p className="text-sm text-[#636363] leading-relaxed max-w-2xl">
+                        {activeSkill.description}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => handleToggleSave(activeSkill.key)}
+                      className={`px-4 py-2.5 rounded-2xl border font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition cursor-pointer font-display ${
+                        journey.savedOptions.includes(activeSkill.key)
+                          ? "bg-[#ff7f46] text-white border-[#ff7f46] shadow-md"
+                          : "bg-slate-50 text-[#0f2239] border-slate-200/80 hover:bg-slate-100"
+                      }`}
+                    >
+                      <Bookmark className="h-4 w-4" />
+                      <span>{journey.savedOptions.includes(activeSkill.key) ? "Saved" : "Save Trade"}</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-200">
+                    <div>
+                      <span className="text-[10px] font-black uppercase text-[#4582ff] font-display">Duration</span>
+                      <p className="text-sm font-extrabold text-[#0f2239]">{activeSkill.duration}</p>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-black uppercase text-[#4582ff] font-display">NSQF Level</span>
+                      <p className="text-sm font-extrabold text-[#0f2239]">{activeSkill.nsqfLevel}</p>
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-black uppercase text-[#4582ff] font-display">Conducting Authority</span>
+                      <p className="text-sm font-extrabold text-[#0f2239]">{activeSkill.conductingAuthority}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 bg-white p-6 rounded-2xl border border-slate-200">
+                    <h4 className="font-extrabold font-display text-[#0f2239] text-base">Practical Competencies Provided</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {activeSkill.careerProspects.map((cp, idx) => (
+                        <span key={idx} className="px-3 py-1.5 rounded-xl bg-[#ff7f46]/10 text-[#ff7f46] font-bold text-xs">
+                          {cp}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-[#0f2239] text-white rounded-2xl space-y-3">
+                    <h4 className="font-extrabold font-display text-white text-base">Official Admissions & Registration</h4>
+                    <p className="text-xs text-slate-300">{activeSkill.source.label}</p>
+                    <a href={activeSkill.source.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#ff7f46] text-white font-extrabold text-xs uppercase tracking-wider font-display">
+                      <span>Open Official ITI Portal</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                </>
+              ) : activeGovt ? (
+                <>
+                  <div className="flex items-start justify-between">
+                    <div className="space-y-2">
+                      <span className="text-xs font-black uppercase tracking-wider text-emerald-600 font-display">
+                        PATHWAY DEEP DIVE • GOVERNMENT CAREER ({activeGovt.conductingAuthority})
+                      </span>
+                      <h2 className="text-3xl font-extrabold font-display text-[#0f2239]">
+                        {activeGovt.targetCadre}
+                      </h2>
+                      <p className="text-sm text-[#636363] leading-relaxed max-w-2xl">
+                        {activeGovt.summary}
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={() => handleToggleSave(activeGovt.key)}
+                      className={`px-4 py-2.5 rounded-2xl border font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition cursor-pointer font-display ${
+                        journey.savedOptions.includes(activeGovt.key)
+                          ? "bg-[#ff7f46] text-white border-[#ff7f46] shadow-md"
+                          : "bg-slate-50 text-[#0f2239] border-slate-200/80 hover:bg-slate-100"
+                      }`}
+                    >
+                      <Bookmark className="h-4 w-4" />
+                      <span>{journey.savedOptions.includes(activeGovt.key) ? "Saved" : "Save Cadre"}</span>
+                    </button>
+                  </div>
+
+                  <div className="space-y-4 p-6 bg-emerald-50 rounded-2xl border border-emerald-200">
+                    <h4 className="font-extrabold font-display text-emerald-950 text-base">Educational Stepping Stones & Statutory Prerequisite</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {activeGovt.educationSteppingStones.map((ss, idx) => (
+                        <div key={idx} className="p-4 bg-white rounded-xl border border-emerald-200 space-y-1">
+                          <span className="text-[10px] font-black text-emerald-700 font-display uppercase">{ss.stage}</span>
+                          <div className="font-bold text-xs text-[#0f2239]">{ss.action}</div>
+                          <p className="text-[11px] text-[#636363]">{ss.details}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="p-6 bg-[#0f2239] text-white rounded-2xl space-y-3">
+                    <h4 className="font-extrabold font-display text-white text-base">Official Recruitment Portal</h4>
+                    <p className="text-xs text-slate-300">Official rules and recruitment notifications are issued by {activeGovt.conductingAuthority}.</p>
+                    <a href={activeGovt.source.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider font-display">
+                      <span>Visit Official Portal</span>
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  </div>
+                </>
+              ) : (
                 <>
                   <div className="flex items-start justify-between">
                     <div className="space-y-2">
@@ -1466,7 +1624,7 @@ export function GuidedStoryJourney() {
                     </div>
                   )}
                 </>
-              ) : null}
+              )}
 
               <div className="flex items-center justify-between pt-6 border-t border-slate-100">
                 <button

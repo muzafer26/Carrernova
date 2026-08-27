@@ -35,7 +35,7 @@ const navGroups: NavGroup[] = [
     label: "Explore",
     icon: Home,
     items: [
-      { to: "/dashboard", label: "My Saved Journey", icon: Home, exact: true },
+      { to: "/dashboard", label: "Overview & Workspaces", icon: Home, exact: true, badge: "HUB" },
       { to: "/dashboard/profile", label: "Guided Advisor", icon: User },
     ],
   },
